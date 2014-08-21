@@ -1,9 +1,9 @@
-# winston-logentries
+# winston-logentries-transport
 
-[![NPM version](https://badge.fury.io/js/winston-logentries.svg)](http://badge.fury.io/js/winston-logentries)
-[![Bower version](https://badge.fury.io/bo/winston-logentries.svg)](http://badge.fury.io/bo/winston-logentries)
-[![Build Status](https://travis-ci.org/RiptideCloud/winston-logentries.svg?branch=master)](https://travis-ci.org/RiptideCloud/winston-logentries)
-[![Coverage Status](https://img.shields.io/coveralls/RiptideCloud/winston-logentries.svg?branch=master)](https://coveralls.io/r/RiptideCloud/winston-logentries)
+[![NPM version](https://badge.fury.io/js/winston-logentries-transport.svg)](http://badge.fury.io/js/winston-logentries-transport)
+[![Bower version](https://badge.fury.io/bo/winston-logentries-transport.svg)](http://badge.fury.io/bo/winston-logentries-transport)
+[![Build Status](https://travis-ci.org/RiptideCloud/winston-logentries-transport.svg?branch=master)](https://travis-ci.org/RiptideCloud/winston-logentries-transport)
+[![Coverage Status](https://img.shields.io/coveralls/RiptideCloud/winston-logentries-transport.svg?branch=master)](https://coveralls.io/r/RiptideCloud/winston-logentries-transport)
 
 A [Logentries](https://logentries.com) transport for [Winston](https://github.com/flatiron/winston).
 
@@ -11,13 +11,13 @@ A [Logentries](https://logentries.com) transport for [Winston](https://github.co
 
 #### NPM
 ```bash
-$ npm install winston-logentries
+$ npm install winston-logentries-transport
 ```
 
 ## Node.js
 ```js
 var winston = require('winston');
-var Logentries = require('winston-logentries').Logentries;
+var Logentries = require('winston-logentries-transport').Logentries;
 
 winston.add(new Logentries({ token: 'YOUR TOKEN HERE' });
 ```

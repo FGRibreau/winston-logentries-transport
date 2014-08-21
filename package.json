@@ -1,11 +1,11 @@
 {
-    "name": "winston-logentries",
+    "name": "winston-logentries-transport",
     "description": "A Logentries transport for winston",
     "version": "0.0.1",
     "author": "David Pate <me@davidtpate.com>",
     "repository": {
         "type": "git",
-        "url": "http://github.com/RiptideCloud/winston-logentries.git"
+        "url": "http://github.com/RiptideCloud/winston-logentries-transport.git"
     },
     "keywords": ["logging", "sysadmin", "tools", "winston", "logentries"],
     "dependencies": {
