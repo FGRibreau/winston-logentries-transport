@@ -1,7 +1,6 @@
 # winston-logentries-transport
 
 [![NPM version](https://badge.fury.io/js/winston-logentries-transport.svg)](http://badge.fury.io/js/winston-logentries-transport)
-[![Bower version](https://badge.fury.io/bo/winston-logentries-transport.svg)](http://badge.fury.io/bo/winston-logentries-transport)
 [![Build Status](https://travis-ci.org/RiptideCloud/winston-logentries-transport.svg?branch=master)](https://travis-ci.org/RiptideCloud/winston-logentries-transport)
 [![Coverage Status](https://img.shields.io/coveralls/RiptideCloud/winston-logentries-transport.svg?branch=master)](https://coveralls.io/r/RiptideCloud/winston-logentries-transport)
 
