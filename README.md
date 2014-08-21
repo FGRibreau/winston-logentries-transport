@@ -1,168 +1,36 @@
 # winston-logentries
 
-A Logentries transport for [winston](https://github.com/flatiron/winston).
+[![NPM version](https://badge.fury.io/js/winston-logentries.svg)](http://badge.fury.io/js/winston-logentries)
+[![Bower version](https://badge.fury.io/bo/winston-logentries.svg)](http://badge.fury.io/bo/winston-logentries)
+[![Build Status](https://travis-ci.org/RiptideCloud/winston-logentries.svg?branch=master)](https://travis-ci.org/RiptideCloud/winston-logentries)
+[![Coverage Status](https://img.shields.io/coveralls/RiptideCloud/winston-logentries.svg?branch=master)](https://coveralls.io/r/RiptideCloud/winston-logentries)
 
-## Installation
+A [Logentries](https://logentries.com) transport for [Winston](https://github.com/flatiron/winston).
 
-### Installing npm (node package manager)
+## Install
 
-``` bash
-  $ curl http://npmjs.org/install.sh | sh
+#### NPM
+```bash
+$ npm install winston-logentries
 ```
 
-### Installing winston-papertrail
+## Node.js
+```js
+var winston = require('winston');
+var Logentries = require('winston-logentries').Logentries;
 
-``` bash
-  $ npm install winston
-  $ npm install winston-logentries
+winston.add(new Logentries({ token: 'YOUR TOKEN HERE' });
 ```
 
-There are a few required options for logging to Papertrail:
+## Configuration Options
+When you create the transport you can supply the following options:
+* `token` (string) Required. Logentries destination token uuid
+* `secure` (Boolean) Optional. Use tls for communication, default is false
+* `levels` (Map) Optional. Custom log levels, default is syslog-style
+* `printerror` (Boolean) Optional. Print errors to STDERR with console.error, default is true
+* `timestamp` (Boolean) Optional. Autogenerate a timestamp, default is true
+* `usequotes` (Boolean) Optional. Add double quotes around every field, default is false
 
-* __host:__ FQDN or IP Address of the Papertrail Service Endpoint
-* __port:__ The TLS Endpoint TCP Port
+## License
 
-## Usage
-``` js
-  var winston = require('winston');
-
-  //
-  // Requiring `winston-papertrail` will expose
-  // `winston.transports.Papertrail`
-  //
-  require('winston-papertrail').Papertrail;
-
-  var logger = new winston.Logger({
-  	transports: [
-  		new winston.transports.Papertrail({
-  			host: 'logs.papertrailapp.com',
-  			port: 12345
-  		})
-  	]
-  });
-
-  logger.info('this is my message');
-```
-
-For more some advanced logging, you can take advantage of custom formatting for
-Papertrail:
-
-``` js
-  var winston = require('winston');
-
-  //
-  // Requiring `winston-papertrail` will expose
-  // `winston.transports.Papertrail`
-  //
-  require('winston-papertrail').Papertrail;
-
-  var logger = new winston.Logger({
-  	transports: [
-  		new winston.transports.Papertrail({
-  			host: 'logs.papertrailapp.com',
-  			port: 12345,
-  			logFormat: function(level, message) {
-  			    return '<<<' + level + '>>> ' + message;
-  			}
-  		})
-  	]
-  });
-
-  logger.info('this is my message');
-```
-
-The Papertrail transport is also capable of emitting events for `error` and `connect` so you can log to other transports:
-
-``` js
-var winston = require('winston'),
-	Papertrail = require('winston-papertrail').Papertrail;
-
-var logger,
-	consoleLogger = new winston.transports.Console({
-		level: 'debug',
-		timestamp: function() {
-			return new Date().toString();
-		},
-		colorize: true
-	}),
-	ptTransport = new Papertrail({
-		host: 'logs.papertrailapp.com',
-		port: 12345,
-		hostname: 'web-01',
-		logFormat: function(level, message) {
-			return '[' + level + '] ' + message;
-		}
-	});
-
-ptTransport.on('error', function(err) {
-	logger && logger.error(err);
-});
-
-ptTransport.on('connect', function(message) {
-	logger && logger.info(message);
-});
-
-var logger = new winston.Logger({
-	levels: {
-		debug: 0,
-		info: 1,
-		warn: 2,
-		error: 3
-	},
-	transports: [
-		ptTransport,
-		consoleLogger
-	]
-});
-
-logger.info('this is my message ' + new Date().getTime());
-```
-
-### Colorization
-
-The `winston-papertrail` transport supports colorization with `winston`. Currently, the ANSI codes used for escape sequences are part of the search index, so please be advised when using colorization.
-
-```Javascript
-var winston = require('winston'),
-    Papertrail = require('winston-papertrail').Papertrail;
-
-var logger = new winston.Logger({
-    transports: [
-        new Papertrail({
-            host: 'logs.papertrailapp.com',
-            port: 12345, // your port here
-            colorize: true
-        })
-    ]
-});
-
-logger.info('Hello from colorized winston', logger);
-```
-
-### Closing the transport
-
-As of `v0.1.3` `winston-papertrail` transport supports closing the transport (and the underlying TLS connection) via the `Winston.Transport` `close` method. Thus, you can enable scenarios where your transport automatically closes when you close the `winston` logger.
-
-```Javascript
-var winston = require('winston'),
-    Papertrail = require('winston-papertrail').Papertrail;
-
-pt = new Papertrail({
-    host: 'logs.papertrailapp.com',
-    port: 12345 // your port here
-});
-
-var logger = new winston.Logger({
-    transports: [ pt ]
-});
-
-pt.on('connect', function () {
-    logger.info('logging before I close');
-    logger.close(); // this closes the underlying TLS connection in the Papertrailt transport
-});
-```
-
-Currently, the Papertrail transport only supports TLS logging.
-
-
-#### Author: [Ken Perkins](http://blog.clipboard.com)
+  [MIT](LICENSE)
