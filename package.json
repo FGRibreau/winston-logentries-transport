@@ -7,6 +7,9 @@
         "type": "git",
         "url": "http://github.com/RiptideCloud/winston-logentries-transport.git"
     },
+    "bugs": {
+        "url": "https://github.com/RiptideCloud/winston-logentries-transport/issues"
+    },
     "keywords": ["logging", "sysadmin", "tools", "winston", "logentries"],
     "dependencies": {
         "node-logentries": ">=0.0.x"
