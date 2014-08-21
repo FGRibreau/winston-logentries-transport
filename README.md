@@ -18,7 +18,7 @@ $ npm install winston-logentries-transport
 var winston = require('winston');
 var Logentries = require('winston-logentries-transport').Logentries;
 
-winston.add(new Logentries({ token: 'YOUR TOKEN HERE' });
+winston.add(Logentries, { token: 'YOUR TOKEN HERE' });
 ```
 
 ## Configuration Options
