@@ -1,0 +1,32 @@
+{
+    "name": "winston-logentries",
+    "description": "A Logentries transport for winston",
+    "version": "0.0.1",
+    "author": "David Pate <me@davidtpate.com>",
+    "repository": {
+        "type": "git",
+        "url": "http://github.com/RiptideCloud/winston-logentries.git"
+    },
+    "keywords": ["logging", "sysadmin", "tools", "winston", "logentries"],
+    "dependencies": {
+        "node-logentries": ">=0.0.x"
+    },
+    "devDependencies": {
+        "winston": ">=0.6.x",
+        "mocha": "^1.x",
+        "should": "^4.x",
+        "istanbul": "^0.x"
+    },
+    "peerDependencies": {
+        "winston": ">=0.6.x"
+    },
+    "main": "index.js",
+    "scripts": {
+        "test": "mocha --check-leaks --bail --reporter spec test/",
+        "test-cov": "istanbul cover node_modules/mocha/bin/_mocha -- --check-leaks --reporter dot test/",
+        "test-travis": "istanbul cover node_modules/mocha/bin/_mocha --report lcovonly -- --check-leaks --reporter spec test/"
+    },
+    "engines": {
+        "node": ">= 0.4.0"
+    }
+}
