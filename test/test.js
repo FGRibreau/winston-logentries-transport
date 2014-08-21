@@ -47,7 +47,13 @@
             winston.transports.Logentries.should.be.type('function');
             done();
         });
-        it('Should be able to be instantiated with many options', function (done) {
+        it('Should be able to be instantiated without using the new keyword', function (done) {
+            var transport = LogentriesTransport({ token: 'test' });
+            (transport instanceof LogentriesTransport).should.be.true;
+            winston.transports.Logentries.should.be.type('function');
+            done();
+        });
+        it('Should be able to be instantiated with all options', function (done) {
             var transport = new LogentriesTransport({
                 token: 'test',
                 secure: true,
@@ -64,6 +70,42 @@
             (transport instanceof LogentriesTransport).should.be.true;
             winston.transports.Logentries.should.be.type('function');
             transport.log('info', 'test', { test: 'test' }, function() {});
+            done();
+        });
+        it('Should be able to log with no meta provided', function (done) {
+            var transport = new LogentriesTransport({
+                token: 'test'
+            });
+            (transport instanceof LogentriesTransport).should.be.true;
+            winston.transports.Logentries.should.be.type('function');
+            transport.log('info', 'test', function() {});
+            done();
+        });
+        it('Should be able to log with an object as the message', function (done) {
+            var transport = new LogentriesTransport({
+                token: 'test'
+            });
+            (transport instanceof LogentriesTransport).should.be.true;
+            winston.transports.Logentries.should.be.type('function');
+            transport.log('info', { name: 'Malcolm Reynolds' }, function() {});
+            done();
+        });
+        it('Should be able to log with a string as the meta', function (done) {
+            var transport = new LogentriesTransport({
+                token: 'test'
+            });
+            (transport instanceof LogentriesTransport).should.be.true;
+            winston.transports.Logentries.should.be.type('function');
+            transport.log('info', 'test', 'I am C-3P0, human-cybord relations.', function() {});
+            done();
+        });
+        it('Should be able to log with an empty meta object', function (done) {
+            var transport = new LogentriesTransport({
+                token: 'test'
+            });
+            (transport instanceof LogentriesTransport).should.be.true;
+            winston.transports.Logentries.should.be.type('function');
+            transport.log('info', 'test', {}, function() {});
             done();
         });
     })

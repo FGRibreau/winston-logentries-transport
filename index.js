@@ -71,7 +71,7 @@
             meta = false;
         }
 
-        if (meta && Object.keys(meta).length === 0) {
+        if (meta && typeof meta === 'object' && Object.keys(meta).length === 0) {
             meta = false;
         }
 
