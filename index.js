@@ -23,6 +23,8 @@
  */
 
 (function (module, util, winston, logentries) {
+    'use strict';
+
     /**
      * Logentries class
      *
