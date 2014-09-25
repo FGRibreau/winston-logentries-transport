@@ -16,6 +16,6 @@
     "expr": true,
     "latedef": "nofunc",
     "quotmark": "single",
-    "indent": 2,
+    "indent": 4,
     "node": true
 }

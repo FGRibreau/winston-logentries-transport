@@ -45,16 +45,18 @@
             return new Logentries(options);
         }
 
-        var self = this;
-        options = options || {};
+        var self      = this;
+        options       = options || {};
 
-        self.name = 'logentries';
-        self.level = options.level || 'info';
+        self.name     = 'logentries';
+        self.level    = options.level || 'info';
+        self.rewriter = options.rewriter;
+
         if (!options.token) {
             throw new Error('Missing require parameter: token');
         }
 
-        self.logger = logentries.logger(options);
+        self.logger   = logentries.logger(options);
     };
 
     Logentries.is = function(obj) {
@@ -83,6 +85,13 @@
         // lets transform it before moving on
         if (typeof(output) !== 'string') {
             output = JSON.stringify(output, null, 2);
+        }
+
+        if(self.rewriter){
+            var out = self.rewriter(level, output, meta);
+            level   = out[0];
+            output  = out[1];
+            meta    = out[2];
         }
 
         if (meta) {

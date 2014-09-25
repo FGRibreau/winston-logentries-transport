@@ -65,12 +65,18 @@
                 },
                 printerror: true,
                 timestamp: true,
-                usequotes: true
+                usequotes: true,
+                rewriter: function(level, msg, meta){
+                    return [level, 'APP: ' + msg, meta];
+                }
             });
             (transport instanceof LogentriesTransport).should.be.true;
             winston.transports.Logentries.should.be.type('function');
+            transport.logger.log = function(level, output){
+                output.should.startWith('APP:');
+                done();
+            };
             transport.log('info', 'test', { test: 'test' }, function() {});
-            done();
         });
         it('Should be able to log with no meta provided', function (done) {
             var transport = new LogentriesTransport({
