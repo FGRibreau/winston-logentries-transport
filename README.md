@@ -2,7 +2,7 @@
 
 [![NPM version](https://badge.fury.io/js/winston-logentries-transport-with-rewriter.svg)](http://badge.fury.io/js/winston-logentries-transport-with-rewriter)
 [![Build Status](https://travis-ci.org/FGRibreau/winston-logentries-transport.svg?branch=master)](https://travis-ci.org/FGRibreau/winston-logentries-transport)
-[![Coverage Status](https://img.shields.io/coveralls/FGRibreau/winston-logentries-transport.svg?branch=master)](https://coveralls.io/r/FGRibreau/winston-logentries-transport)
+[![Coverage Status](https://coveralls.io/repos/FGRibreau/winston-logentries-transport/badge.png?branch=master)](https://coveralls.io/r/FGRibreau/winston-logentries-transport?branch=master)
 
 A [Logentries](https://logentries.com) transport for [Winston](https://github.com/flatiron/winston).
 
